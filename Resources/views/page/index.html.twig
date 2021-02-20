@@ -1,6 +1,7 @@
 {% extends '@Wcm/Layout/shared/page_base.html.twig' %}
 
-{% block title %}Page index{% endblock %}
+{% block title %}Liste des pages
+{% endblock %}
 {% block subtitle %}Liste des pages{% endblock %}
 {% block content %}
     <div class="table-responsive">
@@ -37,13 +38,14 @@
                 </tr>
             {% else %}
                 <tr>
-                    <td colspan="5">no records found</td>
+                    <td colspan="5">Aucun enregistrement trouvé
+                    </td>
                 </tr>
             {% endfor %}
 
             </tbody>
         </table>
     </div>
-    <a href="{{ path('page_new') }}">Create new</a>
+    <a href="{{ path('page_new') }}">Ajouter</a>
 {% endblock %}
 
