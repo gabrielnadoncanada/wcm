@@ -30,7 +30,7 @@
                         <th> {{ 'image.alt'|trans({}, 'image') }}</th>
                         <th style="text-align: center"> {{ 'image.thumbnail'|trans({}, 'image') }}</th>
                         <th> {{ 'image.updatedAt'|trans({}, 'image') }}</th>
-                        <th class="w-15 text-right">{{ 'bci.cms.general.actions'|trans({}, 'cms_bundle') }}</th>
+                        <th class="w-15 text-right">{{ 'bci.Wcm.general.actions'|trans({}, 'Wcm_bundle') }}</th>
                     </tr>
                     </thead>
                     <tfoot>
@@ -40,7 +40,7 @@
                         <th> {{ 'image.alt'|trans({}, 'image') }}</th>
                         <th style="text-align: center"> {{ 'image.thumbnail'|trans({}, 'image') }}</th>
                         <th> {{ 'image.updatedAt'|trans({}, 'image') }}</th>
-                        <th class="w-15 text-right">{{ 'bci.cms.general.actions'|trans({}, 'cms_bundle') }}</th>
+                        <th class="w-15 text-right">{{ 'bci.Wcm.general.actions'|trans({}, 'Wcm_bundle') }}</th>
                     </tr>
                     </tfoot>
                     <tbody>
@@ -61,8 +61,8 @@
                                 </td>
                                 <td>{{image.updatedAt|date('Y-m-d H:i:s')}}</td>
                                 <td class="text-right">
-                                    <a rel="tooltip" title="{{ 'bci.cms.general.action.edit'|trans({}, 'cms_bundle') }}"
-                                       data-originial-title="{{ 'bci.cms.general.action.edit'|trans({}, 'cms_bundle') }}"
+                                    <a rel="tooltip" title="{{ 'bci.Wcm.general.action.edit'|trans({}, 'Wcm_bundle') }}"
+                                       data-originial-title="{{ 'bci.Wcm.general.action.edit'|trans({}, 'Wcm_bundle') }}"
                                        class="btn btn-link btn-just-icon"
                                        id="bntEditImage" data-ice="app.modalEditImage" data-ice-params='["{{ image.title }}","{{ image.alt }}","{{ image.id }}"]'>
                                         <i class="material-icons">edit</i>

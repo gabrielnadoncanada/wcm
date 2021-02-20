@@ -21,18 +21,18 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $roles = [
-            'bci.cms.profile.roles.admin_bci'  => 'ROLE_SUPER_ADMIN',
-            'bci.cms.profile.roles.admin'  => 'ROLE_ADMIN',
+            'bci.Wcm.profile.roles.admin_bci'  => 'ROLE_SUPER_ADMIN',
+            'bci.Wcm.profile.roles.admin'  => 'ROLE_ADMIN',
         ];
 
         if (!$options['is_admin']) {
-            unset($roles['bci.cms.profile.roles.admin_bci']);
+            unset($roles['bci.Wcm.profile.roles.admin_bci']);
         }
 
         $builder
             ->add('firstName', TextType::class, [
-                'label'              => 'bci.cms.profile.firstname',
-                'translation_domain' => 'cms_bundle',
+                'label'              => 'bci.Wcm.profile.firstname',
+                'translation_domain' => 'Wcm_bundle',
                 'attr' => [
                     'class' => 'form-control',
                     'col'   => 'col-12',
@@ -41,8 +41,8 @@ class UserType extends AbstractType
                 'required' => false,
             ])
             ->add('lastName', TextType::class, [
-                'label'              => 'bci.cms.profile.lastname',
-                'translation_domain' => 'cms_bundle',
+                'label'              => 'bci.Wcm.profile.lastname',
+                'translation_domain' => 'Wcm_bundle',
                 'attr' => [
                     'class' => 'form-control',
                     'col'   => 'col-12',
@@ -51,8 +51,8 @@ class UserType extends AbstractType
                 'required' => false,
             ])
             ->add('username', TextType::class, [
-                'label'              => 'bci.cms.profile.username',
-                'translation_domain' => 'cms_bundle',
+                'label'              => 'bci.Wcm.profile.username',
+                'translation_domain' => 'Wcm_bundle',
                 'attr' => [
                     'class' => 'form-control',
                     'col'   => 'col-12',
@@ -61,8 +61,8 @@ class UserType extends AbstractType
                 'required' => false,
             ])
             ->add('email', EmailType::class, [
-                'label'              => 'bci.cms.profile.email',
-                'translation_domain' => 'cms_bundle',
+                'label'              => 'bci.Wcm.profile.email',
+                'translation_domain' => 'Wcm_bundle',
                 'attr' => [
                     'class' => 'form-control',
                     'col'   => 'col-12',
@@ -71,8 +71,8 @@ class UserType extends AbstractType
                 'required' => false,
             ])
             ->add('password', PasswordType::class, [
-                'label'              => 'bci.cms.profile.password',
-                'translation_domain' => 'cms_bundle',
+                'label'              => 'bci.Wcm.profile.password',
+                'translation_domain' => 'Wcm_bundle',
                 'empty_data' => '',
                 'attr' => [
                     'class' => 'form-control',
@@ -82,8 +82,8 @@ class UserType extends AbstractType
                 'required' => false,
             ])
             ->add('role', ChoiceType::class, [
-                'label'              => 'bci.cms.profile.roles.title',
-                'translation_domain' => 'cms_bundle',
+                'label'              => 'bci.Wcm.profile.roles.title',
+                'translation_domain' => 'Wcm_bundle',
                 'choices'  =>  $roles,
                 'attr' => [
                     'class' => 'form-control',
@@ -91,7 +91,7 @@ class UserType extends AbstractType
                     'labelIn' => true
                 ],
                 'required' => true,
-                'placeholder'        => 'bci.cms.profile.roles.placeholder',
+                'placeholder'        => 'bci.Wcm.profile.roles.placeholder',
             ])
         ;
     }

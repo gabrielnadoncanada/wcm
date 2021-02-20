@@ -1,0 +1,10 @@
+{% extends '@Wcm/Layout/layout.html.twig' %}
+
+{% block main %}
+    {{ parent() }}
+    {% block title %}Titre de la page{% endblock %}
+    {% block subtitle %}Sous-titre de la page{% endblock %}
+    {% block content %}
+        Exemple de contenu
+    {% endblock %}
+{% endblock %}
