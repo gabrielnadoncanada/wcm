@@ -9,7 +9,6 @@
     "symfony/console": "~2.7|~3.0|~4.0",
     "symfony/dependency-injection": "~2.7|~3.0|~4.0",
     "jdorn/sql-formatter": "^1.2.16",
-    "doctrine/doctrine-bundle": "~1.0",
     "knplabs/knp-menu-bundle": "^2.0",
     "symfony/asset": "^4.0",
     "symfony/flex": "^1.0",
