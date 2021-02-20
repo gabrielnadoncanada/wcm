@@ -1,0 +1,11 @@
+{% extends '@Wcm/Layout/layout.html.twig' %}
+
+
+
+{% block main %}
+    <h1>Create new Page</h1>
+
+    {{ include('@Wcm/page/_form.html.twig') }}
+
+    <a href="{{ path('page_index') }}">back to list</a>
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends '@Wcm/Layout/layout.html.twig' %}
+
+
+
+{% block main %}
+    <h1>Edit Page</h1>
+
+    {{ include('@Wcm/page/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('page_index') }}">back to list</a>
+
+    {{ include('@Wcm/page/_delete_form.html.twig') }}
+{% endblock %}

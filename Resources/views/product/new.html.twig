@@ -1,0 +1,11 @@
+{% extends '@Wcm/Layout/layout.html.twig' %}
+
+
+
+{% block main %}
+    <h1>Create new Product</h1>
+
+    {{ include('@Wcm/product/_form.html.twig') }}
+
+    <a href="{{ path('product_index') }}">back to list</a>
+{% endblock %}

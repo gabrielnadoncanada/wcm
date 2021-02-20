@@ -1,0 +1,58 @@
+{% extends '@Wcm/Layout/layout.html.twig' %}
+
+
+
+{% block main %}
+    <h1 class="h3 mb-0 text-gray-800 mb-4">Page index</h1>
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Liste des pages</h6>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Titre</th>
+                            <th>Langue</th>
+                            <th>Url</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                    <tr>
+                        <th>Id</th>
+                        <th>Titre</th>
+                        <th>Langue</th>
+                        <th>Url</th>
+                        <th>Actions</th>
+                    </tr>
+                    </tfoot>
+                    <tbody>
+                    {% for page in pages %}
+                        <tr>
+                            <td>{{ page.id }}</td>
+                            <td>{{ page.title }}</td>
+                            <td>{{ page.locale }}</td>
+                            <td>{{ page.slug }}</td>
+                            <td>
+                                <a href="{{ path('page_show', {'id': page.id}) }}">voir</a>
+                                <a href="{{ path('page_edit', {'id': page.id}) }}">modifier</a>
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="5">no records found</td>
+                        </tr>
+                    {% endfor %}
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+
+    <a href="{{ path('page_new') }}">Create new</a>
+{% endblock %}

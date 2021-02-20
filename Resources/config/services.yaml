@@ -1,0 +1,15 @@
+services:
+  _defaults:
+    autowire: true
+    autoconfigure: true
+
+  Nadmin\WcmBundle\:
+    resource: '../../*'
+    exclude: '../../{Entity,Migrations,Tests,Twig,Resources, Kernel.php}'
+  Nadmin\WcmBundle\Controller\:
+    resource: '../../Controller'
+    tags: ['controller.service_arguments']
+    autowire: true
+  Nadmin\WcmBundle\Repository\UserRepository:
+    autowire: true
+    tags: ['doctrine.repository_service']
