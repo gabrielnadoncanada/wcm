@@ -116,11 +116,13 @@ class UserController
      * @Config\Template
      * @return array
      */
-    public function show()
+    public function show(Request $request)
     {
-
+        $id = $request->query->get('id');
         return [
             'title' => 'WCM - User',
+            'user' => $this->getDoctrine()->getRepository(User::class)->find($id)
+
         ];
     }
 

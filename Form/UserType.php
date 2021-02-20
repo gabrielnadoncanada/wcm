@@ -21,17 +21,17 @@ class UserType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $roles = [
-            'bci.Wcm.profile.roles.admin_bci'  => 'ROLE_SUPER_ADMIN',
-            'bci.Wcm.profile.roles.admin'  => 'ROLE_ADMIN',
+            'roles.admin_bci'  => 'ROLE_SUPER_ADMIN',
+            'roles.admin'  => 'ROLE_ADMIN',
         ];
 
         if (!$options['is_admin']) {
-            unset($roles['bci.Wcm.profile.roles.admin_bci']);
+            unset($roles['roles.admin_bci']);
         }
 
         $builder
             ->add('firstName', TextType::class, [
-                'label'              => 'bci.Wcm.profile.firstname',
+                'label'              => 'First Name',
                 'translation_domain' => 'Wcm_bundle',
                 'attr' => [
                     'class' => 'form-control',
@@ -41,7 +41,7 @@ class UserType extends AbstractType
                 'required' => false,
             ])
             ->add('lastName', TextType::class, [
-                'label'              => 'bci.Wcm.profile.lastname',
+                'label'              => 'Last Name',
                 'translation_domain' => 'Wcm_bundle',
                 'attr' => [
                     'class' => 'form-control',
@@ -51,7 +51,7 @@ class UserType extends AbstractType
                 'required' => false,
             ])
             ->add('username', TextType::class, [
-                'label'              => 'bci.Wcm.profile.username',
+                'label'              => 'Username',
                 'translation_domain' => 'Wcm_bundle',
                 'attr' => [
                     'class' => 'form-control',
@@ -61,7 +61,7 @@ class UserType extends AbstractType
                 'required' => false,
             ])
             ->add('email', EmailType::class, [
-                'label'              => 'bci.Wcm.profile.email',
+                'label'              => 'Email',
                 'translation_domain' => 'Wcm_bundle',
                 'attr' => [
                     'class' => 'form-control',
@@ -71,7 +71,7 @@ class UserType extends AbstractType
                 'required' => false,
             ])
             ->add('password', PasswordType::class, [
-                'label'              => 'bci.Wcm.profile.password',
+                'label'              => 'Password',
                 'translation_domain' => 'Wcm_bundle',
                 'empty_data' => '',
                 'attr' => [
@@ -82,7 +82,7 @@ class UserType extends AbstractType
                 'required' => false,
             ])
             ->add('role', ChoiceType::class, [
-                'label'              => 'bci.Wcm.profile.roles.title',
+                'label'              => 'Role',
                 'translation_domain' => 'Wcm_bundle',
                 'choices'  =>  $roles,
                 'attr' => [
@@ -91,7 +91,7 @@ class UserType extends AbstractType
                     'labelIn' => true
                 ],
                 'required' => true,
-                'placeholder'        => 'bci.Wcm.profile.roles.placeholder',
+                'placeholder'        => 'roles.placeholder',
             ])
         ;
     }

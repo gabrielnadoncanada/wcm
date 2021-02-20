@@ -17,7 +17,7 @@ class AdminController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->render('@Wcm/admin/index.html.twig', [
+        return $this->redirectToRoute('page_index', [
         ]);
     }
 
