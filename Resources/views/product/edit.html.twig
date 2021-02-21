@@ -1,7 +1,6 @@
-{% extends '@Wcm/Layout/shared/page_base.html.twig' %}
+{% extends '@Wcm/Layout/layout.html.twig' %}
 
-{% block title %}edit product{% endblock %}
-{% block subtitle %}{% endblock %}
+
 {% block content %}
     {#    ========================= MODAL==========================    #}
     <div class="modal fade" id="modalEditImage" name="modalEditImage" tabindex="-1" role="dialog" >
@@ -43,7 +42,7 @@
 
     <a href="{{ path('product_index') }}">back to list</a>
 
-    {{ include('@Wcm/product/_delete_form.html.twig') }}
+    {{ include('@Wcm/_shared/_delete_form.html.twig', { 'route': 'product_delete', 'id': product.id}) }}
 {% endblock %}
 
 

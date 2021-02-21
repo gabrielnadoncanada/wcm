@@ -1,0 +1,4 @@
+wcm:
+  actions:
+    update: update
+    return: retour à la liste

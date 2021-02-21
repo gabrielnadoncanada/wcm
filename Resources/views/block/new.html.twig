@@ -1,11 +1,7 @@
 
-{% extends '@Wcm/Layout/shared/page_base.html.twig' %}
+{% extends '@Wcm/Layout/layout.html.twig' %}
 
-{% block title %}New Block{% endblock %}
-{% block subtitle %}New Block{% endblock %}
 {% block content %}
     {{ include('@Wcm/_shared/_form.html.twig') }}
-
-    <a href="{{ path('block_index') }}">retour à la liste</a>
-
+    <a href="{{ path('block_index') }}">{{ 'wcm.actions.return'|trans({}, 'wcm_bundle') }}</a>
 {% endblock %}

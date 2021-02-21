@@ -5,87 +5,24 @@
 {% endblock %}
 
 {% block body %}
-
     <div id="wrapper">
         {% block header %}
-            <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
-                <!-- Sidebar - Brand -->
-                <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                    <div class="sidebar-brand-text mx-3">WCM</div>
-                </a>
-
-                <!-- Divider -->
-                <hr class="sidebar-divider my-0">
-
-                <!-- Divider -->
-                <hr class="sidebar-divider">
-
-                <!-- Heading -->
-                <div class="sidebar-heading">
-                    Interface
-                </div>
-
-                <!-- Nav Item - Pages Collapse Menu -->
-                <li class="nav-item">
-                    <a class="nav-link" href="/admin/pages">
-                        <i class="fas fa-fw fa-folder"></i>
-                        <span>Pages</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/admin/blocks">
-                        <i class="fas fa-fw fa-user"></i>
-                        <span>Blocks</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/admin/templates">
-                        <i class="fas fa-fw fa-user"></i>
-                        <span>Templates</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/admin/products">
-                        <i class="fas fa-fw fa-user"></i>
-                        <span>Products</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/admin/users">
-                        <i class="fas fa-fw fa-user"></i>
-                        <span>Users</span></a>
-                </li>
-                <hr class="sidebar-divider">
-                <!-- Sidebar Toggler (Sidebar) -->
-{#                <div class="text-center d-none d-md-inline">#}
-{#                    <button class="rounded-circle border-0" id="sidebarToggle"></button>#}
-{#                </div>#}
-
-
-            </ul>
+            {% include '@Wcm/Layout/_partial/_header.html.twig' %}
         {% endblock %}
         <div id="content-wrapper" class="d-flex flex-column">
             <div id="content">
                 {% block topbar %}
-                    <!-- Topbar -->
                     <nav class="navbar navbar-expand navbar-light topbar mb-4 static-top">
-
-                        <!-- Sidebar Toggle (Topbar) -->
                         <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                             <i class="fa fa-bars"></i>
                         </button>
-
-
-                        <!-- Topbar Navbar -->
                         <ul class="navbar-nav ml-auto">
-
-
-
-                            <!-- Nav Item - User Information -->
                             <li class="nav-item dropdown no-arrow">
                                 <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ app.user.username }}</span>
                                     <i class="fas fa-fw fa-user"></i>
                                 </a>
-                                <!-- Dropdown - User Information -->
                                 <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                      aria-labelledby="userDropdown">
                                     <a class="dropdown-item" href="/">
@@ -103,18 +40,15 @@
                                     </a>
                                 </div>
                             </li>
-
                         </ul>
-
                     </nav>
                 {% endblock %}
-
+                {% set title = title|default(app.request.attributes.get('_route')|replace({'_': ' '})|capitalize) %}
                 <div class="container-fluid">
-
-                    <h1 class="h3 mb-0 text-gray-800 mb-4">{% block title %}{% endblock %}</h1>
+                    <h1 class="h3 mb-0 text-gray-800 mb-4">{{ title }}</h1>
                     <div class="card shadow mb-4">
                         <div class="card-header py-3">
-                            <h6 class="m-0 font-weight-bold text-primary">{% block subtitle %}{% endblock %}</h6>
+                            <h6 class="m-0 font-weight-bold text-primary">{{ title }}</h6>
                         </div>
                         <div class="card-body">
                             {% block content %}
@@ -125,13 +59,7 @@
                 </div>
             </div>
             {% block footer %}
-                <footer class="sticky-footer">
-                    <div class="container my-auto">
-                        <div class="copyright text-center my-auto">
-                            <span>Copyright © WCM 2020</span>
-                        </div>
-                    </div>
-                </footer>
+                {% include '@Wcm/Layout/_partial/_footer.html.twig' %}
             {% endblock %}
         </div>
     </div>

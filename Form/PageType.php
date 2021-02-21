@@ -21,7 +21,7 @@ class PageType extends AbstractType
             ->add('slug')
             ->add('template', EntityType::class, [
                 'class'              => Template::class,
-                'choice_label'       => 'title',
+                'choice_label'       => 'name',
                 'multiple'           => false,
                 'expanded'           => false,
             ])

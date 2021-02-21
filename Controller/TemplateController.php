@@ -48,15 +48,15 @@ class TemplateController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id}", name="template_show", methods={"GET"})
-     */
-    public function show(Template $template): Response
-    {
-        return $this->render('@Wcm/template/show.html.twig', [
-            'template' => $template,
-        ]);
-    }
+//    /**
+//     * @Route("/{id}", name="template_show", methods={"GET"})
+//     */
+//    public function show(Template $template): Response
+//    {
+//        return $this->render('@Wcm/template/show.html.twig', [
+//            'template' => $template,
+//        ]);
+//    }
 
     /**
      * @Route("/{id}/edit", name="template_edit", methods={"GET","POST"})

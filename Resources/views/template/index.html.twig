@@ -1,14 +1,12 @@
 
-{% extends '@Wcm/Layout/shared/page_base.html.twig' %}
+{% extends '@Wcm/Layout/layout.html.twig' %}
 
-{% block title %}Liste des templates{% endblock %}
-{% block subtitle %}{% endblock %}
 {% block content %}
     <table class="table">
         <thead>
         <tr>
             <th>Id</th>
-            <th>E</th>
+            <th>Name</th>
             <th>actions</th>
         </tr>
         </thead>
@@ -16,9 +14,8 @@
         {% for template in templates %}
             <tr>
                 <td>{{ template.id }}</td>
-                <td>{{ template.e }}</td>
+                <td>{{ template.name }}</td>
                 <td>
-                    <a href="{{ path('template_show', {'id': template.id}) }}">show</a>
                     <a href="{{ path('template_edit', {'id': template.id}) }}">edit</a>
                 </td>
             </tr>

@@ -1,12 +1,9 @@
-{% extends '@Wcm/Layout/shared/page_base.html.twig' %}
+{% extends '@Wcm/Layout/layout.html.twig' %}
 
-{% block title %}Edit Page{% endblock %}
-{% block subtitle %}{% endblock %}
+
 {% block content %}
     {{ include('@Wcm/_shared/_form.html.twig', {'button_label': 'Update'}) }}
-
     <a href="{{ path('page_index') }}">back to list</a>
-
-    {{ include('@Wcm/page/_delete_form.html.twig') }}
+    {{ include('@Wcm/_shared/_delete_form.html.twig', {'route': 'page_delete', 'id': page.id}) }}
 {% endblock %}
 

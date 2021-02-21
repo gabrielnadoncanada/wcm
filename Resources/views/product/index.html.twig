@@ -1,7 +1,6 @@
-{% extends '@Wcm/Layout/shared/page_base.html.twig' %}
+{% extends '@Wcm/Layout/layout.html.twig' %}
 
-{% block title %}liste des produits{% endblock %}
-{% block subtitle %}{% endblock %}
+
 {% block content %}
     <table class="table">
         <thead>
@@ -23,7 +22,7 @@
                 <td>{{ product.description }}</td>
                 <td>{{ product.price }}</td>
                 <td>
-                    <a href="{{ path('product_show', {'id': product.id}) }}">show</a>
+
                     <a href="{{ path('product_edit', {'id': product.id}) }}">edit</a>
                 </td>
             </tr>
