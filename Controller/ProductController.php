@@ -22,7 +22,7 @@ class ProductController extends AbstractController
     use ControllerTrait;
 
     /**
-     * @Route("/", name="product_index", methods={"GET"})
+     * @Route("s", name="product_index", methods={"GET"})
      */
     public function index(ProductRepository $productRepository): Response
     {

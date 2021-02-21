@@ -1,0 +1,11 @@
+{% extends '@Wcm/Layout/shared/page_base.html.twig' %}
+
+{% block title %}Edit Block{% endblock %}
+{% block subtitle %}{% endblock %}
+{% block content %}
+    {{ include('@Wcm/block/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('block_index') }}">back to list</a>
+
+    {{ include('@Wcm/block/_delete_form.html.twig') }}
+{% endblock %}

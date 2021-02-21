@@ -16,7 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class PageController extends AbstractController
 {
     /**
-     * @Route("/", name="page_index", methods={"GET"})
+     * @Route("s", name="page_index", methods={"GET"})
      */
     public function index(PageRepository $pageRepository): Response
     {
