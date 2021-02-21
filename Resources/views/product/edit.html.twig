@@ -1,9 +1,8 @@
-{% extends '@Wcm/Layout/layout.html.twig' %}
+{% extends '@Wcm/Layout/shared/page_base.html.twig' %}
 
-
-
-{% block main %}
-    <h1>Edit Product</h1>
+{% block title %}edit product{% endblock %}
+{% block subtitle %}{% endblock %}
+{% block content %}
     {#    ========================= MODAL==========================    #}
     <div class="modal fade" id="modalEditImage" name="modalEditImage" tabindex="-1" role="dialog" >
         <div class="modal-dialog" role="document">
@@ -46,3 +45,5 @@
 
     {{ include('@Wcm/product/_delete_form.html.twig') }}
 {% endblock %}
+
+

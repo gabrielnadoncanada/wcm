@@ -1,12 +1,13 @@
 {% extends '@Wcm/Layout/shared/page_base.html.twig' %}
 
-{% block title %}Edit user{% endblock %}
+{% block title %}edit template{% endblock %}
 {% block subtitle %}{% endblock %}
 {% block content %}
     {{ include('@Wcm/_shared/_form.html.twig', {'button_label': 'Update'}) }}
 
-    <a href="{{ path('app_wcm_users') }}">back to list</a>
+    <a href="{{ path('template_index') }}">back to list</a>
 
-    {{ include('@Wcm/user/_delete_form.html.twig') }}
+    {{ include('@Wcm/template/_delete_form.html.twig') }}
 {% endblock %}
+
 

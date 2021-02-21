@@ -1,11 +1,12 @@
+
 {% extends '@Wcm/Layout/shared/page_base.html.twig' %}
 
-{% block title %} New user
-{% endblock %}
+{% block title %}new template{% endblock %}
 {% block subtitle %}{% endblock %}
 {% block content %}
     {{ include('@Wcm/_shared/_form.html.twig') }}
 
-    <a href="{{ path('app_wcm_users') }}">back to list</a>
+    <a href="{{ path('template_index') }}">back to list</a>
 {% endblock %}
+
 

@@ -1,32 +1,30 @@
-{% extends '@Wcm/Layout/layout.html.twig' %}
+{% extends '@Wcm/Layout/shared/page_base.html.twig' %}
 
-
-
-{% block main %}
-    <h1>Product</h1>
-
+{% block title %}product{% endblock %}
+{% block subtitle %}{% endblock %}
+{% block content %}
     <table class="table">
         <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ product.id }}</td>
-            </tr>
-            <tr>
-                <th>Title</th>
-                <td>{{ product.title }}</td>
-            </tr>
-            <tr>
-                <th>Categories</th>
-                <td>{{ product.categories }}</td>
-            </tr>
-            <tr>
-                <th>Description</th>
-                <td>{{ product.description }}</td>
-            </tr>
-            <tr>
-                <th>Price</th>
-                <td>{{ product.price }}</td>
-            </tr>
+        <tr>
+            <th>Id</th>
+            <td>{{ product.id }}</td>
+        </tr>
+        <tr>
+            <th>Title</th>
+            <td>{{ product.title }}</td>
+        </tr>
+        <tr>
+            <th>Categories</th>
+            <td>{{ product.categories }}</td>
+        </tr>
+        <tr>
+            <th>Description</th>
+            <td>{{ product.description }}</td>
+        </tr>
+        <tr>
+            <th>Price</th>
+            <td>{{ product.price }}</td>
+        </tr>
         </tbody>
     </table>
 

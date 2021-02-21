@@ -1,20 +1,18 @@
-{% extends '@Wcm/Layout/layout.html.twig' %}
+{% extends '@Wcm/Layout/shared/page_base.html.twig' %}
 
-
-
-{% block main %}
-    <h1>Product index</h1>
-
+{% block title %}liste des produits{% endblock %}
+{% block subtitle %}{% endblock %}
+{% block content %}
     <table class="table">
         <thead>
-            <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Categories</th>
-                <th>Description</th>
-                <th>Price</th>
-                <th>actions</th>
-            </tr>
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Categories</th>
+            <th>Description</th>
+            <th>Price</th>
+            <th>actions</th>
+        </tr>
         </thead>
         <tbody>
         {% for product in products %}

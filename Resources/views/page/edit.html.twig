@@ -3,7 +3,7 @@
 {% block title %}Edit Page{% endblock %}
 {% block subtitle %}{% endblock %}
 {% block content %}
-    {{ include('@Wcm/page/_form.html.twig', {'button_label': 'Update'}) }}
+    {{ include('@Wcm/_shared/_form.html.twig', {'button_label': 'Update'}) }}
 
     <a href="{{ path('page_index') }}">back to list</a>
 

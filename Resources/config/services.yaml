@@ -13,3 +13,4 @@ services:
   Nadmin\WcmBundle\Repository\UserRepository:
     autowire: true
     tags: ['doctrine.repository_service']
+
