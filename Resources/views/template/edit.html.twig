@@ -1,10 +1,18 @@
+
+
 {% extends '@Wcm/Layout/layout.html.twig' %}
 
-
 {% block content %}
-    {{ include('@Wcm/_shared/_form.html.twig', {'button_label': 'Update'}) }}
-    <a href="{{ path('template_index') }}">back to list</a>
-    {{ include('@Wcm/_shared/_delete_form.html.twig', {'route': 'template_delete', 'id': template.id}) }}
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
+{% endblock %}
+{% block content_inside_footer %}
+    {{ include('@Wcm/_shared/_delete_form.html.twig', {'route': 'wcm_template_delete', 'id': template.id}) }}
+    <button class="btn btn-primary float-right">Update</button>
+
 {% endblock %}
 
-
+{% block content_outside_footer %}
+    <a class="px-2 mt-5 d-block" href="{{ path('wcm_templates_index') }}">back to list</a>
+{% endblock %}

@@ -17,7 +17,7 @@ class AdminController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->redirectToRoute('page_index', [
+        return $this->redirectToRoute('wcm_pages_index', [
         ]);
     }
 

@@ -16,7 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class BlockController extends AbstractController
 {
     /**
-     * @Route("s", name="block_index", methods={"GET"})
+     * @Route("s", name="wcm_blocks_index", methods={"GET"})
      */
     public function index(BlockRepository $blockRepository): Response
     {
@@ -26,7 +26,7 @@ class BlockController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="block_new", methods={"GET","POST"})
+     * @Route("/new", name="wcm_block_add", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -39,7 +39,7 @@ class BlockController extends AbstractController
             $entityManager->persist($block);
             $entityManager->flush();
 
-            return $this->redirectToRoute('block_index');
+            return $this->redirectToRoute('wcm_blocks_index');
         }
 
         return $this->render('@Wcm/block/new.html.twig', [
@@ -48,18 +48,9 @@ class BlockController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id}", name="block_show", methods={"GET"})
-     */
-    public function show(Block $block): Response
-    {
-        return $this->render('@Wcm/block/show.html.twig', [
-            'block' => $block,
-        ]);
-    }
 
     /**
-     * @Route("/{id}/edit", name="block_edit", methods={"GET","POST"})
+     * @Route("/{id}/edit", name="wcm_block_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Block $block): Response
     {
@@ -69,7 +60,7 @@ class BlockController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('block_index');
+            return $this->redirectToRoute('wcm_blocks_index');
         }
 
         return $this->render('@Wcm/block/edit.html.twig', [
@@ -79,7 +70,7 @@ class BlockController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="block_delete", methods={"DELETE"})
+     * @Route("/{id}", name="wcm_block_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Block $block): Response
     {
@@ -89,6 +80,6 @@ class BlockController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('block_index');
+        return $this->redirectToRoute('wcm_blocks_index');
     }
 }

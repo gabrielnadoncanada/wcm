@@ -59,7 +59,7 @@ class User
     /**
      * @var string
      *
-     * @ORM\Column(type="string", length=64)
+     * @ORM\Column(type="string")
      */
     private $password;
 

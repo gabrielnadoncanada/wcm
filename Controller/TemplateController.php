@@ -16,7 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class TemplateController extends AbstractController
 {
     /**
-     * @Route("s", name="template_index", methods={"GET"})
+     * @Route("s", name="wcm_templates_index", methods={"GET"})
      */
     public function index(TemplateRepository $templateRepository): Response
     {
@@ -26,7 +26,7 @@ class TemplateController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="template_new", methods={"GET","POST"})
+     * @Route("/new", name="wcm_template_add", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -39,7 +39,7 @@ class TemplateController extends AbstractController
             $entityManager->persist($template);
             $entityManager->flush();
 
-            return $this->redirectToRoute('template_index');
+            return $this->redirectToRoute('wcm_templates_index');
         }
 
         return $this->render('@Wcm/template/new.html.twig', [
@@ -48,18 +48,9 @@ class TemplateController extends AbstractController
         ]);
     }
 
-//    /**
-//     * @Route("/{id}", name="template_show", methods={"GET"})
-//     */
-//    public function show(Template $template): Response
-//    {
-//        return $this->render('@Wcm/template/show.html.twig', [
-//            'template' => $template,
-//        ]);
-//    }
 
     /**
-     * @Route("/{id}/edit", name="template_edit", methods={"GET","POST"})
+     * @Route("/{id}/edit", name="wcm_template_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Template $template): Response
     {
@@ -69,7 +60,7 @@ class TemplateController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('template_index');
+            return $this->redirectToRoute('wcm_templates_index');
         }
 
         return $this->render('@Wcm/template/edit.html.twig', [
@@ -79,7 +70,7 @@ class TemplateController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="template_delete", methods={"DELETE"})
+     * @Route("/{id}", name="wcm_template_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Template $template): Response
     {
@@ -89,6 +80,6 @@ class TemplateController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('template_index');
+        return $this->redirectToRoute('wcm_templates_index');
     }
 }

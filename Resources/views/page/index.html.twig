@@ -1,49 +1,29 @@
 {% extends '@Wcm/Layout/layout.html.twig' %}
 
-
 {% block content %}
-    <div class="table-responsive">
-        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-            <thead>
-            <tr>
-                <th>Id</th>
-                <th>Titre</th>
-                <th>Langue</th>
-                <th>Url</th>
-                <th>Actions</th>
-            </tr>
-            </thead>
-            <tfoot>
-            <tr>
-                <th>Id</th>
-                <th>Titre</th>
-                <th>Langue</th>
-                <th>Url</th>
-                <th>Actions</th>
-            </tr>
-            </tfoot>
-            <tbody>
-            {% for page in pages %}
-                <tr>
-                    <td>{{ page.id }}</td>
-                    <td>{{ page.title }}</td>
-                    <td>{{ page.locale }}</td>
-                    <td>{{ page.slug }}</td>
-                    <td>
-{#                        <a href="{{ path('page_show', {'id': page.id}) }}">voir</a>#}
-                        <a href="{{ path('page_edit', {'id': page.id}) }}">modifier</a>
-                    </td>
-                </tr>
-            {% else %}
-                <tr>
-                    <td colspan="5">Aucun enregistrement trouvé
-                    </td>
-                </tr>
-            {% endfor %}
-
-            </tbody>
-        </table>
-    </div>
-    <a href="{{ path('page_new') }}">Ajouter</a>
+    {{ include('@Wcm/_shared/_table_responsive.html.twig',
+        {
+            'entity': pages,
+            'entity_title': 'page',
+            'fields': {
+            1: {
+                title: 'id'
+            },
+            2: {
+                title: 'Title'
+            },
+            3: {
+                title: 'Locale'
+            },
+            4: {
+                title: 'Slug'
+            }
+        }
+        }
+    ) }}
 {% endblock %}
 
+{% block content_inside_footer %}
+    <a class="btn btn-primary ml-auto" href="{{ path('wcm_page_add') }}">Ajouter</a>
+
+{% endblock %}

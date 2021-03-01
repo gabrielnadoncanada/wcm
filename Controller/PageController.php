@@ -16,7 +16,7 @@ use Symfony\Component\Routing\Annotation\Route;
 class PageController extends AbstractController
 {
     /**
-     * @Route("s", name="page_index", methods={"GET"})
+     * @Route("s", name="wcm_pages_index", methods={"GET"})
      */
     public function index(PageRepository $pageRepository): Response
     {
@@ -26,7 +26,7 @@ class PageController extends AbstractController
     }
 
     /**
-     * @Route("/new", name="page_new", methods={"GET","POST"})
+     * @Route("/new", name="wcm_page_add", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -39,7 +39,7 @@ class PageController extends AbstractController
             $entityManager->persist($page);
             $entityManager->flush();
 
-            return $this->redirectToRoute('page_index');
+            return $this->redirectToRoute('wcm_pages_index');
         }
 
         return $this->render('@Wcm/page/new.html.twig', [
@@ -48,18 +48,9 @@ class PageController extends AbstractController
         ]);
     }
 
-    /**
-     * @Route("/{id}", name="page_show", methods={"GET"})
-     */
-    public function show(Page $page): Response
-    {
-        return $this->render('@Wcm/page/show.html.twig', [
-            'page' => $page,
-        ]);
-    }
 
     /**
-     * @Route("/{id}/edit", name="page_edit", methods={"GET","POST"})
+     * @Route("/{id}/edit", name="wcm_page_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Page $page): Response
     {
@@ -69,7 +60,7 @@ class PageController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $this->getDoctrine()->getManager()->flush();
 
-            return $this->redirectToRoute('page_index');
+            return $this->redirectToRoute('wcm_pages_index');
         }
 
         return $this->render('@Wcm/page/edit.html.twig', [
@@ -79,7 +70,7 @@ class PageController extends AbstractController
     }
 
     /**
-     * @Route("/{id}", name="page_delete", methods={"DELETE"})
+     * @Route("/{id}", name="wcm_page_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Page $page): Response
     {
@@ -89,6 +80,6 @@ class PageController extends AbstractController
             $entityManager->flush();
         }
 
-        return $this->redirectToRoute('page_index');
+        return $this->redirectToRoute('wcm_pages_index');
     }
 }

@@ -1,14 +1,6 @@
 {% form_theme form '@Wcm/Layout/shared/styl_builder_form_layout.html.twig' %}
 {{ form_start(form, {"attr":{"class":"col-12"}}) }}
-
 {% import '@Wcm/image/shared/_delete_form.html.twig' as macroForm %}
-
-
-{#{{ form_start(form) }}#}
-{#    {{ form_widget(form) }}#}
-
-{#                            {% do form.setRendered %}#}
-
 
 <div class="row">
     <div class="col-md-9 col-sm-12 ml-auto mr-auto">
@@ -100,8 +92,6 @@
     </div>
 {#    {% do form.images.setRendered %}#}
 </div>
-
-
 
     <button class="btn">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}

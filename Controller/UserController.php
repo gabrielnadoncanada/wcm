@@ -25,7 +25,7 @@ class UserController
     }
 
     /**
-     * @Config\Route("s", name="app_wcm_users")
+     * @Config\Route("s", name="wcm_users_index")
      *
      * @Config\Template
      * @return array
@@ -39,7 +39,7 @@ class UserController
     }
 
     /**
-     * @Config\Route("/new", name="app_wcm_add_user", methods="GET|POST")
+     * @Config\Route("/new", name="wcm_user_add", methods="GET|POST")
      *
      * @Config\Template
      * @return array
@@ -67,7 +67,7 @@ class UserController
     }
 
     /**
-     * @Config\Route("/{id}/edit", name="app_wcm_edit_user", methods="GET|POST")
+     * @Config\Route("/{id}/edit", name="wcm_user_edit", methods="GET|POST")
      *
      * @Config\Template
      * @return array
@@ -97,7 +97,7 @@ class UserController
     }
 
     /**
-     * @Config\Route("/{id}", name="app_wcm_delete_user", methods="DELETE")
+     * @Config\Route("/{id}", name="wcm_user_delete", methods="DELETE")
      */
     public function delete(Request $request, User $user)
     {
@@ -111,7 +111,7 @@ class UserController
     }
 
     /**
-     * @Config\Route("/", name="app_wcm_user_show")
+     * @Config\Route("/", name="wcm_user_show")
      *
      * @Config\Template
      * @return array

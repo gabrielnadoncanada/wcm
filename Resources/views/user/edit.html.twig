@@ -1,11 +1,14 @@
 {% extends '@Wcm/Layout/layout.html.twig' %}
 
-
 {% block content %}
-    {{ include('@Wcm/_shared/_form.html.twig', {'button_label': 'Update'}) }}
-
-    <a href="{{ path('app_wcm_users') }}">back to list</a>
-
-    {{ include('@Wcm/_shared/_delete_form.html.twig', {'route': 'app_wcm_delete_user', 'id': user.id}) }}
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
 {% endblock %}
 
+{% block content_inside_footer %}
+    <a class="btn btn-primary ml-auto" href="{{ path('wcm_user_add') }}">Ajouter</a>
+{% endblock %}
+{% block content_outside_footer %}
+    <a class="px-2 mt-5 d-block" href="{{ path('wcm_users_index') }}">back to list</a>
+{% endblock %}

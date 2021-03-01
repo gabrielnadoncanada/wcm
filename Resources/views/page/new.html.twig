@@ -1,10 +1,14 @@
 {% extends '@Wcm/Layout/layout.html.twig' %}
 
 {% block content %}
-    {{ include('@Wcm/_shared/_form.html.twig') }}
-    <a href="{{ path('page_index') }}">back to list</a>
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
 {% endblock %}
+{% block content_inside_footer %}
+    <a class="btn btn-primary ml-auto" href="{{ path('wcm_page_add') }}">Ajouter</a>
 
-
-
-
+{% endblock %}
+{% block content_outside_footer %}
+    <a class="px-2 mt-5 d-block" href="{{ path('wcm_pages_index') }}">back to list</a>
+{% endblock %}
