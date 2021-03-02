@@ -1,4 +1,3 @@
-//Initialize for backend cms
 
 $.Class({
     namespace: 'app',
@@ -50,115 +49,7 @@ $.Class({
 
         });
     },
-    setUpMetaSelect:function(element) {
-        //Hiding all fields
-        $(element).parents('div.metaPrototype').find('div.trmetaname').hide();
-        $(element).parents('div.metaPrototype').find('div.trmetaproperty').hide();
-        $(element).parents('div.metaPrototype').find('div.trmetacontent').hide();
-        $(element).parents('div.metaPrototype').find('div.trmetaimagefile').hide();
-        $(element).parents('div.metaPrototype').find('input:text').val('');
-        $(element).parents('div.metaPrototype').find('textarea').val('');
 
-        let elementSelected = $(element).children().children("option:selected");
-        //Show all fields
-        if ($(elementSelected).data('display-name') === 'CUSTOM' )
-        {
-            $(element).parents('div.metaPrototype').find('div.trmetaname').show();
-            $(element).parents('div.metaPrototype').find('div.trmetaproperty').show();
-            $(element).parents('div.metaPrototype').find('div.trmetacontent').show();
-        }
-        //IMAGES TYPE
-        else if ($(elementSelected).data('display-name') === 'IMAGE' || $(elementSelected).data('display-name') === 'IMAGE_SECURE' )
-        {
-           if ($(elementSelected).val().includes("opengraph"))
-           {
-               $(element).parents('div.metaPrototype').find('div.trmetaproperty').find('input:text').val($(element).children().children("option:selected").data('property'));
-               $(element).parents('div.metaPrototype').find('div.trmetaproperty').hide();
-               $(element).parents('div.metaPrototype').find('div.trmetaname').hide();
-               $(element).parents('div.metaPrototype').find('div.trmetacontent').hide();
-               $(element).parents('div.metaPrototype').find('div.trmetaimagefile').show();
-           }
-           else //Twitter
-           {
-               $(element).parents('div.metaPrototype').find('div.trmetaname').find('input:text').val($(element).children().children("option:selected").data('name'));
-               $(element).parents('div.metaPrototype').find('div.trmetaname').hide();
-               $(element).parents('div.metaPrototype').find('div.trmetaproperty').hide();
-               $(element).parents('div.metaPrototype').find('div.trmetacontent').hide();
-               $(element).parents('div.metaPrototype').find('div.trmetaimagefile').show();
-           }
-        }
-        //OPENGRAPH
-        else if ($(elementSelected).data('type') === 'OPENGRAPH' )
-        {
-            $(element).parents('div.metaPrototype').find('div.trmetaproperty').find('input:text').val($(element).children().children("option:selected").data('property'));
-            $(element).parents('div.metaPrototype').find('div.trmetaproperty').hide();
-            $(element).parents('div.metaPrototype').find('div.trmetaname').hide();
-            $(element).parents('div.metaPrototype').find('div.trmetacontent').show();
-
-        }
-        //BASIC
-        else
-        {
-            $(element).parents('div.metaPrototype').find('div.trmetaname').find('input:text').val($(element).children().children("option:selected").data('name'));
-            $(element).parents('div.metaPrototype').find('div.trmetaname').hide();
-            $(element).parents('div.metaPrototype').find('div.trmetaproperty').hide();
-            $(element).parents('div.metaPrototype').find('div.trmetacontent').show();
-
-        }
-        let placeHolderText = '';
-        let metaName = $(element).children().children("option:selected").data('name');
-        let metaProperty = $(element).children().children("option:selected").data('property');
-
-        if (metaName === 'keyword')
-        {
-            placeHolderText = 'Ex: apples, bananas, peaches ..';
-        }
-        else if (metaProperty === 'og:image' || metaProperty === 'og:url')
-        {
-            placeHolderText = 'Ex: http://example.com/ogp.jpg';
-        }
-        else if (metaProperty === 'og:image:secure_url' || metaProperty === 'og:url')
-        {
-            placeHolderText = 'Ex: https://example.com/ogp.jpg';
-        }
-        $("label[for='" + $(element).attr('id') + "']").html('Méta de type: '+$(element).children().children("option:selected").data('type'));
-        $(element).parents('div.metaPrototype').find('input:text').attr('placeholder', placeHolderText);
-        $(element).parents('div.metaPrototype').find('textarea').attr('placeholder', placeHolderText);
-    },
-    initDisplayMetaTypeInLabel: function (params, element, event) {
-        $(document).ready(function (e) {
-            if ($('.metaSelect').length > 0) {
-                $('.metaSelect').each(function () {
-                    $("label[for='" + $(this).attr('id') + "']").html('Méta de type: ' + $(this).children().children("option:selected").data('type'));
-                });
-            }
-        });
-    },
-    addFromPrototypeMeta: function(params, element, event) {
-        var ctn   = $($(element).data('container')),
-            ctr   = (ctn.data('widget-counter') | ctn.children().length) + 1,
-            proto = $(ctn.data('prototype').replace(/__name__/g, ctr));
-
-        //Disable options that already apper in other selectpicker.
-        var protoSelect = proto.find('select');
-
-        $(protoSelect).on('change', function ()
-        {
-            app.setUpMetaSelect(this);
-        });
-
-        //Enable selectpicker plugin on protoype.
-        // proto.find(".selectpicker").selectpicker();
-        // proto.find("select").selectpicker();
-
-        $(proto).find('div.trmetaname').hide();
-        $(proto).find('div.trmetaproperty').hide();
-        $(proto).find('div.trmetacontent').hide();
-        $(proto).find('.selectpicker').selectpicker();
-        ctn.data('widget-counter', ctr);
-        ctn.find('.empty').hide();
-        ctn.prepend(proto);
-    },
 
     delete_submit: function (params, element, event) {
         event.preventDefault();
@@ -196,9 +87,6 @@ $.Class({
         $(element).closest(params.ctn||'.card').remove();
     },
 
-    removeMeta: function(params, element, event) {
-        $(element).closest('div.card').remove();
-    },
 
     updateRequired: function(params, element, event) {
         console.log('test');
@@ -228,153 +116,7 @@ $.Class({
             });
         });
     },
-    initTinymce: function() {
-        if ($('.tinymce_flag').length > 0) {
-            $('.tinymce_flag').each(function () {
-                // $(this).hide();
-                tinymce.init({
-                    mobile: {
-                        theme: 'silver'
-                    },
-                    selector: '#' + $(this).attr('id'),
-                    images_upload_url: '/cms/upload/image',
-                    image_caption: true,
-                    // datablock: $(this).data('block'),
-                    automatic_uploads: false,
-                    plugins: "advlist autolink link lists image media filemanager code responsivefilemanager template",
-                    toolbar: 'undo redo | styleselect | bold | alignleft alignright aligncenter alignjustify | floatleft floatright | bullist numlist | link unlink image responsivefilemanager | media | code | template | span | removeformat',
-                    menubar: false,
-                    media_live_embeds: true,
-                    valid_children: window.custom_tiny_config.valid_children || "+a[div|h1|h2|h3|h4|h5|h6|p|#text|span],+ul[div|h1|h2|h3|h4|h5|h6|p|#text|li],+div[li],+body[style]",
-                    extended_valid_elements: "i",
-                    content_css: '/build/app.css',
-                    height: $(this).data('height') != undefined ? $(this).data('height') : '250px',
-                    external_filemanager_path: "/bundles/bcicms/assets/js/filemanager/",
-                    filemanager_title: "Gestionnaire de fichiers",
-                    external_plugins: {
-                        "responsivefilemanager": "plugins/responsivefilemanager/plugin.min.js",
-                        "filemanager": "/bundles/bcicms/assets/js/filemanager/plugin.min.js"
-                    },
-                    templates: window.custom_tiny_config.templates,
-                    style_formats: window.custom_tiny_config.style_formats,
-                    formats: window.custom_tiny_config.formats,
-                    content_style: window.custom_tiny_config.content_style,
-                    style_formats_merge: true,
-                    style_formats_autohide: true,
-                    relative_urls: false,
-                    setup: function (editor) {
-                        editor.ui.registry.addButton('span', {
-                            text: 'Span',
-                            onAction: function (_) {
-                                editor.insertContent('&nbsp;<span class="span">'+ editor.selection.getContent({format: 'text'})+' </span>&nbsp;');
-                            }
-                        });
-                        // function getHistory(){
-                        //     $.ajax({
-                        //         type: "GET",
-                        //         url: "/cms/page/" + $('body').data('locale') + "/" + $('body').data('page') + "/" + editor.settings.datablock,
-                        //     }).done(function (data) {
-                        //         function createHistory(date, content) {
-                        //             return {
-                        //                 type: 'menuitem',
-                        //                 text: date,
-                        //                 onAction: function () {
-                        //                     editor.setContent(content);
-                        //                 }
-                        //             };
-                        //         }
-                        //
-                        //         var objects = [];
-                        //         for (let item of data.content) {
-                        //             objects.push(createHistory(item.date, item.body));
-                        //         }
-                        //         editor.ui.registry.addMenuButton('history', {
-                        //             text: 'History',
-                        //             fetch: function (callback) {
-                        //                 var items = objects;
-                        //                 callback(items);
-                        //             }
-                        //         });
-                        //         editor.bodyElement.setAttribute('style', '');
-                        //     });
-                        // }
-                        editor.on('init', function(event) {
-                            $(editor.getBody().parentNode).bind('dragover dragenter dragend drag drop', function(e) {
-                                e.stopPropagation();
-                                e.preventDefault();
-                            });
-                            $(editor.getDoc()).bind('draggesture', function(e) {
-                                e.stopPropagation();
-                                e.preventDefault();
-                            });
-                            // getHistory();
-                        });
-                        editor.ui.registry.addButton('floatleft', {
-                            text: 'Image gauche',
-                            onAction: function (_) {
-                                let node = tinymce.activeEditor.selection.getNode();
-                                node.setAttribute('style', "");
-                                node.setAttribute('data-mce-style', "");
-                                if ($(node).hasClass("right")) {
-                                    $(node).removeClass("right");
-                                }
-                                if ($(node).hasClass("left")) {
-                                    $(node).removeClass("left");
-                                    return
-                                }
-                                $(node).addClass("left");
-                            }
-                        });
-                        editor.ui.registry.addButton('floatright', {
-                            text: 'Image droite',
-                            onAction: function (_) {
-                                let node = tinymce.activeEditor.selection.getNode();
-                                node.setAttribute('style', "");
-                                node.setAttribute('data-mce-style', "");
-                                if ($(node).hasClass("left")) {
-                                    $(node).removeClass("left");
-                                }
-                                if ($(node).hasClass("right")) {
-                                    $(node).removeClass("right");
-                                    return
-                                }
-                                $(node).addClass("right");
-                            }
-                        });
-                    },
 
-                    images_upload_handler: function (blobInfo, success, failure) {
-                        var xhr, formData;
-                        xhr = new XMLHttpRequest();
-                        xhr.withCredentials = false;
-                        xhr.open('POST', '/cms/upload/image');
-
-                        xhr.onload = function() {
-                            var json;
-
-                            if (xhr.status != 200) {
-                                failure('HTTP Error: ' + xhr.status);
-                                return;
-                            }
-
-                            json = JSON.parse(xhr.responseText);
-
-                            if (!json || typeof json.location != 'string') {
-                                failure('Invalid JSON: ' + xhr.responseText);
-                                return;
-                            }
-
-                            success(json.location);
-                        };
-                        formData = new FormData();
-                        formData.append('file', blobInfo.blob(), blobInfo.filename());
-
-                        xhr.send(formData);
-                    }
-                });
-            });
-        }
-    },
     draftMode: function(params, element, event) {
         if ($(element).is(':checked')) {
             $('.publishedAt input').attr("disabled", true);
@@ -394,7 +136,7 @@ $.Class({
             },
         }).done( function(response)
         {
-           location.reload();
+            location.reload();
         }).fail(function(jxh,textmsg,errorThrown)
         {
 
@@ -402,7 +144,7 @@ $.Class({
             console.log(errorThrown);
         });
     },
-     modalEditImage: function(params, element, event)
+    modalEditImage: function(params, element, event)
     {
         if ($('#modalEditImage').length > 0)
         {
@@ -513,5 +255,15 @@ $.Class({
                 });
             });
         });
+    },
+    updateEntity: function(params, element, event)
+    {
+        event.preventDefault();
+        $("form").get(0).submit()
+
     }
+
+
 });
+
+
