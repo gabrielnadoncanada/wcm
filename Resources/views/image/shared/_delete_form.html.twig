@@ -1,6 +1,0 @@
-{% macro formDelete(id, productID)%}
-    <form id="{{ id }}" method="post" action="{{ path('product_deleteImage', {'id': id, 'productID':productID}) }}" onsubmit="return confirm('{{ 'bci.Wcm.general.confirmDelete'|trans({}, 'app') }}');">
-        <input type="hidden" name="_method" value="DELETE">
-        <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ id) }}">
-    </form>
-{% endmacro %}
