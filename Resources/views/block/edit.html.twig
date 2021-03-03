@@ -4,9 +4,6 @@
     {{ form_start(form) }}
     {{ form_widget(form) }}
     {{ form_end(form) }}
-
-
-
 {% endblock %}
 {% block content_inside_footer %}
     {{ include('@Wcm/_shared/_delete_form.html.twig', {'route': 'wcm_block_delete', 'id': block.id}) }}
