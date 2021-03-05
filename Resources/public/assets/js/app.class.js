@@ -259,8 +259,7 @@ $.Class({
     updateEntity: function(params, element, event)
     {
         event.preventDefault();
-        $("form").get(0).submit()
-
+        $("#submit").click();
     }
 
 
