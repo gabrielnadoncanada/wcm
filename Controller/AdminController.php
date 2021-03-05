@@ -17,7 +17,7 @@ class AdminController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->redirectToRoute('wcm_pages_index', [
+        return $this->redirectToRoute('wcm_chiens_index', [
         ]);
     }
 
@@ -27,7 +27,7 @@ class AdminController extends AbstractController
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
          if ($this->getUser()) {
-             return $this->redirectToRoute('/admin');
+             return $this->redirectToRoute('app_index');
          }
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
