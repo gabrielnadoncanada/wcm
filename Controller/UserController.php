@@ -12,7 +12,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
 
 /**
- * @Config\Route("/admin/user")
+ * @Config\Route("/admin/users")
  */
 class UserController
     extends AbstractController {
@@ -25,21 +25,23 @@ class UserController
     }
 
     /**
-     * @Config\Route("s", name="wcm_users_index")
+     * @Config\Route("/", name="wcm_users_index")
      *
      * @Config\Template
      * @return array
      */
     public function index()
     {
-        return [
-            'title' => 'WCM - Users',
-            'users' => $this->getDoctrine()->getRepository(User::class)->findAll()
-        ];
+
+        return $this->render('@Wcm/_shared/_index.html.twig',[
+            'entity' => $this->getDoctrine()->getRepository(User::class)->findAll(),
+            'entity_title' => 'users',
+            'fields' => ['id','username']
+        ]);
     }
 
     /**
-     * @Config\Route("/new", name="wcm_user_add", methods="GET|POST")
+     * @Config\Route("/new", name="wcm_users_new", methods="GET|POST")
      *
      * @Config\Template
      * @return array
@@ -60,14 +62,14 @@ class UserController
             return $this->redirectToRoute('app_wcm_edit_user', ['id' => $user->getId()]);
         }
 
-        return [
+        return $this->render('@Wcm/_shared/_new.html.twig', [
             'user' => $user,
             'form' => $form->createView(),
-        ];
+        ]);
     }
 
     /**
-     * @Config\Route("/{id}/edit", name="wcm_user_edit", methods="GET|POST")
+     * @Config\Route("/{id}/edit", name="wcm_users_edit", methods="GET|POST")
      *
      * @Config\Template
      * @return array
@@ -90,14 +92,14 @@ class UserController
             return $this->redirectToRoute('app_wcm_edit_user', ['id' => $user->getId()]);
         }
 
-        return [
+        return $this->render('@Wcm/_shared/_edit.html.twig', [
             'user' => $user,
             'form' => $form->createView()
-        ];
+        ]);
     }
 
     /**
-     * @Config\Route("/{id}", name="wcm_user_delete", methods="DELETE")
+     * @Config\Route("/{id}/edit", name="wcm_users_delete", methods="DELETE")
      */
     public function delete(Request $request, User $user)
     {
@@ -109,21 +111,4 @@ class UserController
 
         return $this->redirectToRoute('app_wcm_users');
     }
-
-    /**
-     * @Config\Route("/", name="wcm_user_show")
-     *
-     * @Config\Template
-     * @return array
-     */
-    public function show(Request $request)
-    {
-        $id = $request->query->get('id');
-        return [
-            'title' => 'WCM - User',
-            'user' => $this->getDoctrine()->getRepository(User::class)->find($id)
-
-        ];
-    }
-
 }

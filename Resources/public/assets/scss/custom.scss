@@ -1,0 +1,36 @@
+
+//.vich-image {
+//  .form-check {
+//    @extend .btn;
+//    @extend .d-block;
+//    @extend .btn-danger;
+//
+//  }
+//
+//  .form-group, .form-check {
+//    @extend .p-0;
+//    @extend .border-0;
+//  }
+//}
+//
+//.form-check-input {
+//  @extend .m-0;
+//  @extend .h-100;
+//  @extend .w-100;
+//  left: 0;
+//}
+
+.vich-image img {
+  max-width: 200px;
+  height: 200px;
+  object-fit: cover;
+}
+/*.vich-image {*/
+/*    display: flex;*/
+/*    flex-wrap: wrap;*/
+/*}*/
+
+.custom-file {
+  flex: 0 1 300px;
+  margin-bottom: 1rem;
+}

@@ -1,0 +1,14 @@
+
+{% extends '@Wcm/Layout/layout.html.twig' %}
+
+{% block content %}
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    <input type="submit" hidden id="submit">
+    {{ form_end(form) }}
+{% endblock %}
+
+{% block content_inside_footer %}
+    <label for="submit" class="btn btn-primary ml-auto mb-0" tabindex="0">Ajouter</label>
+{% endblock %}
+

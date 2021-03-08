@@ -11,22 +11,24 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/admin/block")
+ * @Route("/admin/blocks")
  */
 class BlockController extends AbstractController
 {
     /**
-     * @Route("s", name="wcm_blocks_index", methods={"GET"})
+     * @Route("/", name="wcm_blocks_index", methods={"GET"})
      */
     public function index(BlockRepository $blockRepository): Response
     {
-        return $this->render('@Wcm/block/index.html.twig', [
-            'blocks' => $blockRepository->findAll(),
+        return $this->render('@Wcm/_shared/_index.html.twig', [
+            'entity' => $blockRepository->findAll(),
+            'entity_title' => 'blocks',
+            'fields' => ['id','name']
         ]);
     }
 
     /**
-     * @Route("/new", name="wcm_block_add", methods={"GET","POST"})
+     * @Route("/new", name="wcm_blocks_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -42,7 +44,7 @@ class BlockController extends AbstractController
             return $this->redirectToRoute('wcm_blocks_index');
         }
 
-        return $this->render('@Wcm/block/new.html.twig', [
+        return $this->render('@Wcm/_shared/_new.html.twig', [
             'block' => $block,
             'form' => $form->createView(),
         ]);
@@ -50,7 +52,7 @@ class BlockController extends AbstractController
 
 
     /**
-     * @Route("/{id}/edit", name="wcm_block_edit", methods={"GET","POST"})
+     * @Route("/{id}/edit", name="wcm_blocks_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Block $block): Response
     {
@@ -63,14 +65,14 @@ class BlockController extends AbstractController
             return $this->redirectToRoute('wcm_blocks_index');
         }
 
-        return $this->render('@Wcm/block/edit.html.twig', [
+        return $this->render('@Wcm/_shared/_edit.html.twig', [
             'block' => $block,
             'form' => $form->createView(),
         ]);
     }
 
     /**
-     * @Route("/{id}", name="wcm_block_delete", methods={"DELETE"})
+     * @Route("/{id}/edit", name="wcm_blocks_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Block $block): Response
     {

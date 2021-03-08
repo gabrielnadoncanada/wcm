@@ -11,22 +11,24 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/admin/template")
+ * @Route("/admin/templates")
  */
 class TemplateController extends AbstractController
 {
     /**
-     * @Route("s", name="wcm_templates_index", methods={"GET"})
+     * @Route("/", name="wcm_templates_index", methods={"GET"})
      */
     public function index(TemplateRepository $templateRepository): Response
     {
-        return $this->render('@Wcm/template/index.html.twig', [
-            'templates' => $templateRepository->findAll(),
+        return $this->render('@Wcm/_shared/_index.html.twig', [
+            'entity' => $templateRepository->findAll(),
+            'entity_title' => 'templates',
+            'fields' => ['id','name']
         ]);
     }
 
     /**
-     * @Route("/new", name="wcm_template_add", methods={"GET","POST"})
+     * @Route("/new", name="wcm_templates_new", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -42,7 +44,7 @@ class TemplateController extends AbstractController
             return $this->redirectToRoute('wcm_templates_index');
         }
 
-        return $this->render('@Wcm/template/new.html.twig', [
+        return $this->render('@Wcm/_shared/_new.html.twig', [
             'template' => $template,
             'form' => $form->createView(),
         ]);
@@ -50,7 +52,7 @@ class TemplateController extends AbstractController
 
 
     /**
-     * @Route("/{id}/edit", name="wcm_template_edit", methods={"GET","POST"})
+     * @Route("/{id}/edit", name="wcm_templates_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Template $template): Response
     {
@@ -63,14 +65,14 @@ class TemplateController extends AbstractController
             return $this->redirectToRoute('wcm_templates_index');
         }
 
-        return $this->render('@Wcm/template/edit.html.twig', [
+        return $this->render('@Wcm/_shared/_edit.html.twig', [
             'template' => $template,
             'form' => $form->createView(),
         ]);
     }
 
     /**
-     * @Route("/{id}", name="wcm_template_delete", methods={"DELETE"})
+     * @Route("/{id}/edit", name="wcm_templates_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Template $template): Response
     {

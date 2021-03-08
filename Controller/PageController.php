@@ -11,22 +11,24 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
 /**
- * @Route("/admin/page")
+ * @Route("/admin/pages")
  */
 class PageController extends AbstractController
 {
     /**
-     * @Route("s", name="wcm_pages_index", methods={"GET"})
+     * @Route("/", name="wcm_pages_index", methods={"GET"})
      */
     public function index(PageRepository $pageRepository): Response
     {
-        return $this->render('@Wcm/page/index.html.twig', [
-            'pages' => $pageRepository->findAll(),
+        return $this->render('@Wcm/_shared/_index.html.twig', [
+            'entity' => $pageRepository->findAll(),
+            'entity_title' => 'pages',
+            'fields' => ['id','title', 'locale', 'slug']
         ]);
     }
 
     /**
-     * @Route("/new", name="wcm_page_add", methods={"GET","POST"})
+     * @Route("/new", name="wcm_pages_add", methods={"GET","POST"})
      */
     public function new(Request $request): Response
     {
@@ -42,7 +44,7 @@ class PageController extends AbstractController
             return $this->redirectToRoute('wcm_pages_index');
         }
 
-        return $this->render('@Wcm/page/new.html.twig', [
+        return $this->render('@Wcm/_shared/_new.html.twig', [
             'page' => $page,
             'form' => $form->createView(),
         ]);
@@ -50,7 +52,7 @@ class PageController extends AbstractController
 
 
     /**
-     * @Route("/{id}/edit", name="wcm_page_edit", methods={"GET","POST"})
+     * @Route("/{id}/edit", name="wcm_pages_edit", methods={"GET","POST"})
      */
     public function edit(Request $request, Page $page): Response
     {
@@ -62,15 +64,14 @@ class PageController extends AbstractController
 
             return $this->redirectToRoute('wcm_pages_index');
         }
-
-        return $this->render('@Wcm/page/edit.html.twig', [
+        return $this->render('@Wcm/_shared/_edit.html.twig', [
             'page' => $page,
             'form' => $form->createView(),
         ]);
     }
 
     /**
-     * @Route("/{id}", name="wcm_page_delete", methods={"DELETE"})
+     * @Route("/{id}/edit", name="wcm_pages_delete", methods={"DELETE"})
      */
     public function delete(Request $request, Page $page): Response
     {

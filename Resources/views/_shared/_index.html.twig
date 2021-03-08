@@ -1,0 +1,36 @@
+{% extends '@Wcm/Layout/layout.html.twig' %}
+
+{% block content %}
+    <table class="table">
+        <thead>
+        <tr>
+            {% for field in fields %}
+                <th>{{ field }}</th>
+            {% endfor %}
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for item in entity %}
+            <tr>
+                {% for field in fields %}
+                    <td>
+                        {{ attribute(item, field) }}
+                    </td>
+                {% endfor %}
+                <td>
+                    <a href="{{ path('wcm_' ~ entity_title ~ '_edit', {'id': item.id}) }}"><i class="fas fa-edit"></i></a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">Aucun enregistrement trouvé</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+{% block content_inside_footer %}
+    <a class="btn btn-primary ml-auto" href="{{ app.request.requestUri ~ 'new' }}">Ajouter</a>
+{% endblock %}
+
