@@ -40,14 +40,14 @@ class Template
     private $blocks;
 
     /**
-     * @ORM\OneToMany(targetEntity="Nadmin\WcmBundle\Entity\Page", mappedBy="template")
+     * @ORM\OneToMany(targetEntity="Nadmin\WcmBundle\Entity\Node", mappedBy="template")
      */
-    private $pages;
+    private $nodes;
 
     public function __construct()
     {
         $this->blocks = new ArrayCollection();
-        $this->pages = new ArrayCollection();
+        $this->nodes = new ArrayCollection();
     }
 
     public function getId()
@@ -117,30 +117,30 @@ class Template
     }
 
     /**
-     * @return Collection|Page[]
+     * @return Collection|Node[]
      */
     public function getPages(): Collection
     {
-        return $this->pages;
+        return $this->nodes;
     }
 
-    public function addPage(Page $page): self
+    public function addPage(Node $node): self
     {
-        if (!$this->pages->contains($page)) {
-            $this->pages[] = $page;
-            $page->setTemplate($this);
+        if (!$this->nodes->contains($node)) {
+            $this->nodes[] = $node;
+            $node->setTemplate($this);
         }
 
         return $this;
     }
 
-    public function removePage(Page $page): self
+    public function removePage(Node $node): self
     {
-        if ($this->pages->contains($page)) {
-            $this->pages->removeElement($page);
+        if ($this->nodes->contains($node)) {
+            $this->nodes->removeElement($node);
             // set the owning side to null (unless already changed)
-            if ($page->getTemplate() === $this) {
-                $page->setTemplate(null);
+            if ($node->getTemplate() === $this) {
+                $node->setTemplate(null);
             }
         }
 
