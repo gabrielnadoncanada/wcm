@@ -2,25 +2,25 @@
 
 namespace Nadmin\WcmBundle\Repository;
 
-use Nadmin\WcmBundle\Entity\Page;
+use Nadmin\WcmBundle\Entity\Node;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @method Page|null find($id, $lockMode = null, $lockVersion = null)
- * @method Page|null findOneBy(array $criteria, array $orderBy = null)
- * @method Page[]    findAll()
- * @method Page[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method Node|null find($id, $lockMode = null, $lockVersion = null)
+ * @method Node|null findOneBy(array $criteria, array $orderBy = null)
+ * @method Node[]    findAll()
+ * @method Node[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class PageRepository extends ServiceEntityRepository
+class NodeRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Page::class);
+        parent::__construct($registry, Node::class);
     }
 
     // /**
-    //  * @return Page[] Returns an array of Page objects
+    //  * @return Node[] Returns an array of Node objects
     //  */
     /*
     public function findByExampleField($value)
@@ -37,7 +37,7 @@ class PageRepository extends ServiceEntityRepository
     */
 
     /*
-    public function findOneBySomeField($value): ?Page
+    public function findOneBySomeField($value): ?Node
     {
         return $this->createQueryBuilder('p')
             ->andWhere('p.exampleField = :val')

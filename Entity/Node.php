@@ -2,13 +2,13 @@
 
 namespace Nadmin\WcmBundle\Entity;
 
-use Nadmin\WcmBundle\Repository\PageRepository;
+use Nadmin\WcmBundle\Repository\NodeRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * @ORM\Entity(repositoryClass=PageRepository::class)
+ * @ORM\Entity(repositoryClass=NodeRepository::class)
  */
-class Page
+class Node
 {
     /**
      * @ORM\Id

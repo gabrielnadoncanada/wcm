@@ -2,7 +2,7 @@
 
 namespace Nadmin\WcmBundle\Form;
 
-use Nadmin\WcmBundle\Entity\Page;
+use Nadmin\WcmBundle\Entity\Node;
 use Nadmin\WcmBundle\Entity\Template;
 use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
@@ -11,7 +11,7 @@ use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class PageType extends AbstractType
+class NodeType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
@@ -31,7 +31,7 @@ class PageType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults([
-            'data_class' => Page::class,
+            'data_class' => Node::class,
         ]);
     }
 }
