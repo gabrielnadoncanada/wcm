@@ -17,7 +17,8 @@ class AdminController extends AbstractController
      */
     public function index(): Response
     {
-        return $this->redirectToRoute('wcm_chiens_index', [
+        return $this->render('@Wcm/Layout/index.html.twig', [
+            'entity_title' => 'Tableau de bord'
         ]);
     }
 

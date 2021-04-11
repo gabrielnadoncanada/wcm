@@ -20,6 +20,7 @@
   table.dataTable thead th, table.dataTable thead td, table.dataTable.no-footer {
     border-bottom: 1px solid #e3e6f0;
   }
+
   .dataTables_wrapper .dataTables_paginate {
     .paginate_button {
       @extend .border-0;
@@ -28,10 +29,12 @@
       &.current {
         @extend .bg-primary;
       }
+
       &.previous.disabled:hover {
         color: #666 !important;
       }
-      &:not(.current){
+
+      &:not(.current) {
         &:hover {
           background: transparent !important;
           color: #4e73df !important;
@@ -47,4 +50,7 @@
   box-shadow: none !important;
   background: transparent !important;
 }
+
 //#content .dataTables_paginate.paging_simple_numbers
+
+

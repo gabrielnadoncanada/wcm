@@ -1,5 +1,9 @@
 {% extends '@Wcm/Layout/base.html.twig' %}
 
+{% block title %}
+    {% if entity_title is defined  %}{{ entity_title|capitalize ~ " | WCM" }}{% else %}WCM{% endif %}
+{% endblock %}
+
 {% block stylesheets %}
     {% include '@Wcm/Layout/_partial/_stylesheet.html.twig' %}
 {% endblock %}
@@ -40,24 +44,27 @@
                         </ul>
                     </nav>
                 {% endblock %}
-                {% set title = title|default(app.request.attributes.get('_route')|replace({'_': ' '})|capitalize) %}
-                <div class="container-fluid">
-                    <h1 class="h3 mb-0 text-gray-800 mb-4">{{ title }}</h1>
-                    <div class="card shadow mb-4">
-{#                        <div class="card-header py-3">#}
-{#                            <h6 class="m-0 font-weight-bold text-primary">{{ title }}</h6>#}
-{#                        </div>#}
-                        <div class="card-body">
-                            {% block content %}
-                            {% endblock %}
+
+                    {% set title = title|default(app.request.attributes.get('_route')|replace({'_': ' '})|capitalize) %}
+                    <div class="container-fluid">
+                        {% block main %}
+                        <h1 class="h3 mb-0 text-gray-800 mb-4">{{ title }}</h1>
+                        <div class="card shadow mb-4">
+    {#                        <div class="card-header py-3">#}
+    {#                            <h6 class="m-0 font-weight-bold text-primary">{{ title }}</h6>#}
+    {#                        </div>#}
+                            <div class="card-body">
+                                {% block content %}
+                                {% endblock %}
+                            </div>
+                            <div class="card-footer text-muted d-flex justify-content-between">
+                                {% block content_inside_footer %}
+                                {% endblock %}
+                            </div>
                         </div>
-                        <div class="card-footer text-muted d-flex justify-content-between">
-                            {% block content_inside_footer %}
-                            {% endblock %}
-                        </div>
+                        {% endblock %}
                     </div>
 
-                </div>
             </div>
             {% block footer %}
                 {% include '@Wcm/Layout/_partial/_footer.html.twig' %}
