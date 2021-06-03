@@ -18,7 +18,14 @@ $.Class({
                     'alignright alignjustify | bullist numlist | ' +
                     'removeformat code',
             });
+            $('label[for=submit]').on('click', function(e){
+                let tiny_content = tinyMCE.activeEditor.getContent({format : 'raw'});
+                $('.textarea-tiny-mce').val(tiny_content);
+                $("form").submit();
+            })
         }
+
+
     }
 });
 
