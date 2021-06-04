@@ -51,6 +51,45 @@
   background: transparent !important;
 }
 
+
+
+@media only screen and (max-width: 768px) {
+  .dataTables_filter, .dataTables_length  {
+    display: none;
+  }
+
+  .container, .container-fluid, .container-sm, .container-md, .container-lg, .container-xl {
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+  }
+
+  .navbar {
+    padding: 0.5rem 0.5rem;
+  }
+}
+.dataTables_wrapper .dataTables_filter input,
+.dataTables_wrapper .dataTables_length select {
+  border-color:#e3e6f0 !important;
+  border-width: 2px !important;
+}
+
+.dataTables_wrapper .dataTables_length, .dataTables_wrapper .dataTables_filter, .dataTables_wrapper .dataTables_info, .dataTables_wrapper .dataTables_processing, .dataTables_wrapper .dataTables_paginate {
+  color: #858796 !important;
+
+}
+.table.dataTable {
+  margin-bottom: 10px;
+  thead {
+    tr {
+      th:last-child {
+        max-width: 105px !important;
+      }
+    }
+  }
+}
+
+
+
 //#content .dataTables_paginate.paging_simple_numbers
 
 

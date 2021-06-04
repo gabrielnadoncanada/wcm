@@ -29,8 +29,9 @@
         {% endfor %}
         </tbody>
     </table>
+    <a class="float-right mt-4 btn btn-primary ml-auto" href="{{ app.request.requestUri ~ 'new' }}">Ajouter</a>
+
 {% endblock %}
 {% block content_inside_footer %}
-    <a class="btn btn-primary ml-auto" href="{{ app.request.requestUri ~ 'new' }}">Ajouter</a>
 {% endblock %}
 
