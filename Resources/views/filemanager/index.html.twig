@@ -1,13 +1,10 @@
 {% extends '@Wcm/Layout/layout.html.twig' %}
 {% set icon = '' %}
 
- {% block content %}
-     {% embed '@Wcm/filemanager/_partial/display.html.twig' %}
+ {% block main %}
          {% block filemanager %}
-             <a href="/bundles/wcm/assets/js/filemanager/dialog.php?type=0" class="btn iframe-btn" type="button">Open Filemanager</a>
                  <iframe src="/bundles/wcm/assets/js/filemanager/dialog.php?type=0&crossdomain=1" title="FILE MANAGER" style="width: 100%; height: 100vh; border: 0">
                      <p>Your browser does not support iframes.</p>
                  </iframe>
          {% endblock %}
-    {% endembed %}
  {% endblock %}
