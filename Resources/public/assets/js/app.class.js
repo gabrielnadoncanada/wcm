@@ -21,8 +21,7 @@ $.Class({
                 filemanager_title: "Gestionnaire de fichiers",
                 external_plugins: {
                     "responsivefilemanager": "plugins/responsivefilemanager/plugin.min.js",
-                    "filemanager": "/bundles/wcm/assets/js/filemanager/plugin.min.js",
-                    "codemirror": "plugins/codemirror/codemirror-4.8/plugin.js"
+                    "filemanager": "/bundles/wcm/assets/js/filemanager/plugin.min.js"
                 },
             });
             $('input[type=submit]').on('click', function(e){
