@@ -25,11 +25,13 @@ $.Class({
                     "codemirror": "plugins/codemirror/codemirror-4.8/plugin.js"
                 },
             });
-            $('label[for=submit]').on('click', function(e){
+            $('input[type=submit]').on('click', function(e){
                 let tiny_content = tinyMCE.activeEditor.getContent({format : 'raw'});
                 $('.textarea-tiny-mce').val(tiny_content);
+                $('.textarea-tiny-mce').show();
                 $("form").submit();
             })
+
         }
 
 
